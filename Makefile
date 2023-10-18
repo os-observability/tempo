@@ -167,7 +167,7 @@ endif
 # #########
 # Gen Proto
 # #########
-PROTOC = docker run --rm -u ${shell id -u} -v${PWD}:${PWD} -w${PWD} ${DOCKER_PROTOBUF_IMAGE} --proto_path=${PWD}
+PROTOC = docker run --rm -u ${shell id -u} -v${PWD}:${PWD}:z -w${PWD} ${DOCKER_PROTOBUF_IMAGE} --proto_path=${PWD}
 PROTO_INTERMEDIATE_DIR = pkg/.patched-proto
 PROTO_INCLUDES = -I$(PROTO_INTERMEDIATE_DIR)
 PROTO_GEN = $(PROTOC) $(PROTO_INCLUDES) --gogofaster_out=plugins=grpc,paths=source_relative:$(2) $(1)
@@ -222,7 +222,7 @@ gen-proto:
 # ##############
 .PHONY: gen-traceql
 gen-traceql:
-	docker run --rm -v${PWD}:/src/loki ${LOKI_BUILD_IMAGE} gen-traceql-local
+	docker run --rm -v${PWD}:/src/loki:z ${LOKI_BUILD_IMAGE} gen-traceql-local
 
 .PHONY: gen-traceql-local
 gen-traceql-local:
@@ -296,7 +296,7 @@ drone:
 	# piggyback on Loki's build image, this image contains a newer version of drone-cli than is
 	# released currently (1.4.0). The newer version of drone-clie keeps drone.yml human-readable.
 	# This will run 'make drone-jsonnet' from within the container
-	docker run -e DRONE_SERVER -e DRONE_TOKEN --rm -v $(shell pwd):/src/loki ${LOKI_BUILD_IMAGE} drone-jsonnet drone-signature
+	docker run -e DRONE_SERVER -e DRONE_TOKEN --rm -v $(shell pwd):/src/loki:z ${LOKI_BUILD_IMAGE} drone-jsonnet drone-signature
 
 	drone lint .drone/drone.yml --trusted
 
