@@ -329,12 +329,19 @@ func estimateMarshalledSizeFromParquetRow(row parquet.Row) (size int) {
 		if sz > 1 {
 			// for larger values, estimate 1 byte per 20 bytes. this is a very rough estimate
 			// but works well enough for our purposes. TODO: improve this calculation
-			sz = max(sz/20, 1) // nolint: typecheck
+			sz = intMax(sz/20, 1) // nolint: typecheck
 		}
 
 		size += sz
 	}
 	return
+}
+
+func intMax(x, y int) int {
+	if x < y {
+		return y
+	}
+	return x
 }
 
 // countSpans counts the number of spans in the given trace in deconstructed

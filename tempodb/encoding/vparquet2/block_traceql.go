@@ -108,7 +108,7 @@ func (s *span) attributesMatched() int {
 	}
 	// don't count duration nanos b/c it is added to the attributes as well as the span struct
 	// if s.durationNanos != 0 {
-	// 	count++
+	//	count++
 	// }
 	if len(s.id) > 0 {
 		count++
@@ -145,7 +145,8 @@ func putSpan(s *span) {
 	s.nestedSetParent = 0
 	s.nestedSetLeft = 0
 	s.nestedSetRight = 0
-	clear(s.attributes)
+
+	s.attributes = make(map[traceql.Attribute]traceql.Static)
 
 	spanPool.Put(s)
 }
@@ -1662,7 +1663,7 @@ func (c *batchCollector) String() string {
 func (c *batchCollector) KeepGroup(res *parquetquery.IteratorResult) bool {
 	// First pass over spans and attributes from the AttributeCollector
 	spans := res.OtherEntries[:0]
-	clear(c.resAttrs)
+	c.resAttrs = make(map[traceql.Attribute]traceql.Static)
 	for _, kv := range res.OtherEntries {
 		switch v := kv.Value.(type) {
 		case *span:
@@ -1762,7 +1763,7 @@ func (c *traceCollector) String() string {
 // resource-level data.
 func (c *traceCollector) KeepGroup(res *parquetquery.IteratorResult) bool {
 	finalSpanset := getSpanset()
-	clear(c.traceAttrs)
+	c.traceAttrs = make(map[traceql.Attribute]traceql.Static)
 
 	for _, e := range res.Entries {
 		switch e.Key {
