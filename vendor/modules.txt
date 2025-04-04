@@ -375,12 +375,13 @@ github.com/elastic/lunes/dev-tools/mage/gotool
 # github.com/evanphx/json-patch v5.9.0+incompatible
 ## explicit
 github.com/evanphx/json-patch
-# github.com/expr-lang/expr v1.16.9
+# github.com/expr-lang/expr v1.17.2 => github.com/expr-lang/expr v1.17.2
 ## explicit; go 1.18
 github.com/expr-lang/expr
 github.com/expr-lang/expr/ast
 github.com/expr-lang/expr/builtin
 github.com/expr-lang/expr/checker
+github.com/expr-lang/expr/checker/nature
 github.com/expr-lang/expr/compiler
 github.com/expr-lang/expr/conf
 github.com/expr-lang/expr/file
@@ -391,6 +392,7 @@ github.com/expr-lang/expr/parser/lexer
 github.com/expr-lang/expr/parser/operator
 github.com/expr-lang/expr/parser/utils
 github.com/expr-lang/expr/patcher
+github.com/expr-lang/expr/types
 github.com/expr-lang/expr/vm
 github.com/expr-lang/expr/vm/runtime
 # github.com/facette/natsort v0.0.0-20181210072756-2cd4dd1e2dcb
@@ -2173,6 +2175,7 @@ k8s.io/klog/v2/internal/sloghandler
 ## explicit; go 1.18
 k8s.io/utils/clock
 # github.com/bradfitz/gomemcache => github.com/themihai/gomemcache v0.0.0-20180902122335-24332e2d58ab
+# github.com/expr-lang/expr => github.com/expr-lang/expr v1.17.2
 # k8s.io/api => k8s.io/api v0.25.0
 # k8s.io/client-go => k8s.io/client-go v0.25.0
 # github.com/hashicorp/memberlist => github.com/grafana/memberlist v0.3.1-0.20220708130638-bd88e10a3d91
