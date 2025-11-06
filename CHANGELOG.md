@@ -1,10 +1,11 @@
 ## main / unreleased
 
-# v2.9.0-rc.0
+# v2.9.0
 
-* [CHANGE] Upgrade Tempo to go 1.25.1 [#5685](https://github.com/grafana/tempo/pull/5685) (@electron0zero)
-* [CHANGE] Return Bad Request from all frontend endpoints if the tenant can't be extracted. [#5480](https://github.com/grafana/tempo/pull/5480) (@carles-grafana)
 * [CHANGE] **BREAKING CHANGE** Deprecating vParquet2 block format [#5688](https://github.com/grafana/tempo/pull/5688) (@ie-pham)
+* [CHANGE] Upgrade Tempo to go 1.25.1 [#5685](https://github.com/grafana/tempo/pull/5685) (@electron0zero)
+* [CHANGE] **BREAKING CHANGE** We are no longer publishing rpm and deb packages due to an internal change to the handling of signing keys. [#5684](https://github.com/grafana/tempo/pull/5684) (@joe-elliott)
+* [CHANGE] Return Bad Request from all frontend endpoints if the tenant can't be extracted. [#5480](https://github.com/grafana/tempo/pull/5480) (@carles-grafana)
 * [CHANGE]  **BREAKING CHANGE** Migrated Tempo Vulture and Integration Tests from the deprecated Jaeger agent/exporter to the standard OTLP exporter. Vulture now pushes traces to the Tempo OTLP GRCP endpoint. [#5058](https://github.com/grafana/tempo/pull/5058) (@iamrajiv, @javiermolinar)
 * [CHANGE] Do not count cached querier responses for SLO metrics such as inspected bytes. [#5185](https://github.com/grafana/tempo/pull/5185) (@carles-grafana)
 * [CHANGE] Adjust the definition of `tempo_metrics_generator_processor_service_graphs_expired_edges` to exclude edges that are counted in the service graph. [#5319](https://github.com/grafana/tempo/pull/5319) (@joe-elliott)
@@ -43,6 +44,7 @@
 * [ENHANCEMENT] Improve exemplar selection in `quantile_over_time()`. [#5278](https://github.com/grafana/tempo/pull/5278) (@zalegrala)
 * [ENHANCEMENT] Measure bytes received before limits and publish it as `tempo_distributor_ingress_bytes_total`. [#5601](https://github.com/grafana/tempo/pull/5601) (@mapno)
 * [ENHANCEMENT] Add total size logging functionality to track trace [#5625](https://github.com/grafana/tempo/pull/5628)(@sienna011022)
+* [ENHANCEMENT] Enable histogram tuning in the user-configurable overrides API [#5721](https://github.com/grafana/tempo/pull/5721)(@zalegrala)
 * [BUGFIX] Fix Tempo configuration options that are always overrided with config overrides section. [#5202](https://github.com/grafana/tempo/pull/5202) (@KyriosGN0)
 * [BUGFIX] Correctly apply trace idle period in ingesters and add the concept of trace live period. [#5346](https://github.com/grafana/tempo/pull/5346/files) (@joe-elliott)
 * [BUGFIX] Fix invalid YAML output from `/status/runtime_config` endpoint by adding document separator. [#5371](https://github.com/grafana/tempo/pull/5371) (@iamrajiv)
