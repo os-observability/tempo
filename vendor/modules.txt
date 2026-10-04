@@ -1008,7 +1008,7 @@ github.com/knadh/koanf/v2
 ## explicit; go 1.11
 github.com/kylelemons/godebug/diff
 github.com/kylelemons/godebug/pretty
-# github.com/lufia/plan9stats v0.0.0-20251013123823-9fd1530e3ec3
+# github.com/lufia/plan9stats v0.0.0-20260802145828-341c2f0c90b5
 ## explicit; go 1.21
 github.com/lufia/plan9stats
 # github.com/magefile/mage v1.15.0
