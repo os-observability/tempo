@@ -1566,7 +1566,7 @@ github.com/twmb/murmur3
 github.com/twpayne/go-geom
 github.com/twpayne/go-geom/encoding/wkb
 github.com/twpayne/go-geom/encoding/wkbcommon
-# github.com/ua-parser/uap-go v0.0.0-20251207011819-db9adb27a0b8
+# github.com/ua-parser/uap-go v0.0.0-20260529044130-17c35e68e58c
 ## explicit; go 1.22.11
 github.com/ua-parser/uap-go/uaparser
 # github.com/uber/jaeger-client-go v2.30.0+incompatible
