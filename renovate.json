@@ -4,6 +4,12 @@
   "automerge": true,
   "automergeType": "pr",
   "automergeStrategy": "squash",
+  "packageRules": [
+    {
+      "matchJsonata": ["$exists(isVulnerabilityAlert) and isVulnerabilityAlert = true and vulnerabilitySeverity = 'LOW'"],
+      "enabled": false
+    }
+  ],
   "gomod": {
     "packageRules": [
       {
