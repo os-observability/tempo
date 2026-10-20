@@ -1,13 +1,40 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Enables only medium and higher severity vulnerability PRs. This extends the global Mintmaker config at https://github.com/konflux-ci/mintmaker/blob/main/config/renovate/renovate.json",
   "extends": ["security:only-security-updates", "security:gomodIndirectSecurityUpdates"],
   "automerge": true,
   "automergeType": "pr",
   "automergeStrategy": "squash",
+  "enabledManagers": ["gomod"],
   "packageRules": [
     {
       "matchJsonata": ["$exists(isVulnerabilityAlert) and isVulnerabilityAlert = true and vulnerabilitySeverity = 'LOW'"],
       "enabled": false
     }
-  ]
+  ],
+  "gomod": {
+    "packageRules": [
+      {
+        "description": "Disable non-security updates for indirect go.mod dependencies",
+        "enabled": false,
+        "matchDepTypes": [
+          "indirect"
+        ],
+        "matchManagers": [
+          "gomod"
+        ],
+        "matchUpdateTypes": [
+          "major",
+          "minor",
+          "patch",
+          "pin",
+          "digest",
+          "pinDigest",
+          "lockFileMaintenance",
+          "rollback",
+          "replacement"
+        ]
+      }
+    ]
+  }
 }
