@@ -6,12 +6,6 @@
   "automergeType": "pr",
   "automergeStrategy": "squash",
   "enabledManagers": ["gomod"],
-  "packageRules": [
-    {
-      "matchJsonata": ["$exists(isVulnerabilityAlert) and isVulnerabilityAlert = true and vulnerabilitySeverity = 'LOW'"],
-      "enabled": false
-    }
-  ],
   "gomod": {
     "packageRules": [
       {
@@ -34,6 +28,12 @@
           "rollback",
           "replacement"
         ]
+      },
+      {
+        "matchJsonata": ["isVulnerabilityAlert = true and vulnerabilitySeverity = 'LOW'"],
+        "force": {
+          "enabled": false
+        }
       }
     ]
   }
