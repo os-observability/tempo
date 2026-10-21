@@ -9,28 +9,17 @@
   "gomod": {
     "packageRules": [
       {
-        "description": "Disable non-security updates for indirect go.mod dependencies",
-        "enabled": false,
-        "matchDepTypes": [
-          "indirect"
+        "description": "Disable non-security updates after MintMaker's manager rules",
+        "matchJsonata": [
+          "$exists(updateType) and $not(isVulnerabilityAlert = true)"
         ],
-        "matchManagers": [
-          "gomod"
-        ],
-        "matchUpdateTypes": [
-          "major",
-          "minor",
-          "patch",
-          "pin",
-          "digest",
-          "pinDigest",
-          "lockFileMaintenance",
-          "rollback",
-          "replacement"
-        ]
+        "enabled": false
       },
       {
-        "matchJsonata": ["isVulnerabilityAlert = true and vulnerabilitySeverity = 'LOW'"],
+        "description": "Exclude LOW-severity security updates",
+        "matchJsonata": [
+          "isVulnerabilityAlert = true and vulnerabilitySeverity = 'LOW'"
+        ],
         "force": {
           "enabled": false
         }
